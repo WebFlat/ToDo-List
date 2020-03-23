@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <title>ToDo List</title>
+</head>
+
+<body>
+    <section class="todo">
+        <h1 class="todo__title">ToDo List</h1>
+        <div class="todo__inputBlock">
+            <input type="text " class="todo__input" id="innertext" placeholder="Write the task here">
+            <div class="todo__btnBlock">
+                <button class="todo__btn todo__btn--add" onclick="addTodo()">Add todo</button>
+                <button class="todo__btn todo__btn--delAll" onclick="delTodosAll() ">Delete All</button>
+            </div>
+        </div>
+        <div class="todo__itemswrap">
+            <ol class="todo__items" id="out"></ol>
+        </div>
+    </section>
+
+</body>
+
+</html>

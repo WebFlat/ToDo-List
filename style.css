@@ -1,0 +1,211 @@
+html {
+    font-size: 1.2vh;
+    box-sizing: border-box;
+}
+
+body {
+    /* height: 100%; */
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgb(244, 237, 237);
+    background: linear-gradient(151deg, rgba(244, 237, 237, 1) 0%, rgba(47, 106, 149, 1) 46%);
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 30px 20px;
+}
+
+.todo__inputBlock {
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+}
+
+.todo__btnBlock {
+    margin: 0;
+}
+
+.todo__title {
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+.todo__btn {
+    width: 130px;
+    padding: 10px 5px;
+    text-align: center;
+    margin: 20px 15px 0 15px;
+    text-transform: uppercase;
+    background: #eee;
+    border: 3px solid #c3c1c1fa;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-weight: bold;
+    outline: transparent;
+}
+
+.todo__btn--delAll,
+.todo__btndel {
+    background: #ea0303;
+    color: #fff;
+}
+
+.todo__btndel {
+    margin: 0 0 0 10px;
+    justify-content: end;
+    width: auto;
+    padding: 5px;
+    font-size: .9rem;
+    border: 3px solid #3b3838fa;
+}
+
+.todo__btn:hover,
+.todo__btn:focus,
+.todo__btn:active {
+    box-shadow: -1px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    border-color: #000;
+}
+
+.todo__btn:active {
+    transform: translate(2px, 5px);
+    box-shadow: -1px 0px 31px 0px rgba(0, 0, 0, 0.75);
+}
+
+.todo__input {
+    width: 55%;
+    min-width: 250px;
+    padding: 5px;
+    font-size: 2rem;
+    margin: 0 auto;
+    border-radius: 6px;
+    border: 4px solid rgba(0, 0, 0, .5);
+    outline: transparent;
+    transition: all .2s ease-in;
+    animation: shineInput 2s infinite linear;
+}
+
+@keyframes shineInput {
+    0% {
+        border-color: rgba(0, 0, 0, .6);
+    }
+    25% {
+        border-color: rgba(0, 0, 0, .5);
+    }
+    50% {
+        border-color: rgba(0, 0, 0, .2);
+        box-shadow: -1px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    }
+    75% {
+        border-color: rgba(0, 0, 0, .5);
+    }
+    100% {
+        border-color: rgba(0, 0, 0, .6);
+    }
+}
+
+.todo__input:hover,
+.todo__input:focus {
+    border-color: rgba(0, 0, 0, 1);
+    animation: none;
+}
+
+.todo__input::placeholder {
+    text-transform: uppercase;
+}
+
+.todo__items {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.todo__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 3px solid rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    transition: all .2s ease-in;
+    cursor: pointer;
+    background: #eee;
+}
+
+.todo__item:hover,
+.todo__item:focus,
+.todo__item:active {
+    box-shadow: -1px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    border-color: #000;
+    transform: scale(1.04);
+}
+
+.todo__order {
+    width: 25px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.chk {
+    border: 2px solid rgba(0, 0, 0, 1) !important;
+    width: 15px;
+    height: 15px;
+    outline: transparent;
+    position: relative;
+}
+
+.chk::before,
+.chk::after {
+    left: -3px;
+    top: -3px;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    content: '';
+    display: inline-block;
+    background: #eee;
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 1);
+    border-radius: 50%;
+}
+
+.chk::after {
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    left: 2px;
+    background: rgba(0, 0, 0, 1);
+    visibility: hidden;
+}
+
+.chk:checked+.todo__text {
+    text-decoration: line-through;
+}
+
+.chk:checked.chk::after {
+    visibility: visible;
+}
+
+.todo__text {
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 1;
+    margin-left: 10px;
+    flex-grow: 1;
+    max-width: 86%;
+    width: 250px;
+    word-wrap: normal;
+    display: block;
+    white-space: normal;
+    word-wrap: break-word;
+}
