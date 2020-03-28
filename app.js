@@ -1,21 +1,40 @@
-var todoArray = [];
+var todoArray = localStorage.getItem('array');
+console.log(todoArray);
+window.onload = onLoad;
+var list = document.getElementById('out');
+
+
+
+
+function save(inText) {
+    localStorage.setItem('todo', inText);
+    localStorage.setItem('array', todoArray);
+    list.innerHTML = localStorage.getItem('todo');
+}
+
+
+function onLoad() {
+    if (todoArray === null) {
+        todoArray = [];
+    }
+    list.innerHTML = localStorage.getItem('todo');
+}
+
 
 
 function todoOut() {
-    var list = document.getElementById('out');
     var str = '';
     for (var i = 0; i < todoArray.length; i++) {
         str += `<li class="todo__item" data-attr="${i}">`;
         str += `<span class="todo__order">${i+1}.</span>`;
-        str += `<input type="checkbox" class="chk" data-attr="${i}">`;
+        str += `<input type="checkbox" class="chk" data-attr="${i}" onclick="check()">`;
         str += `<p class="todo__text">${todoArray[i]}</p>`;
         str += `<button class="todo__btndel todo__btn" onclick="delTodo(this)" data-id="${i}">delete</button>`;
         str += `</li>`;
     }
-    list.innerHTML = str;
-};
+    save(str);
+}
 
-todoOut();
 
 
 function addTodo() {
@@ -28,28 +47,34 @@ function addTodo() {
         todoOut();
         input.value = '';
     }
-};
+}
+
+
+function check() {
+    var chkbox = document.getElementsByClassName('chk');
+    var line = document.getElementsByClassName('todo__text');
+    for (var a = 0; a < todoArray.length; a++) {
+        if (chkbox[a].checked == true) {
+            line[a].classList.add('active');
+        } else {
+            console.log('false');
+        }
+    }
+}
+
+
 
 
 function delTodosAll() {
     todoArray = [];
+    localStorage.clear('todo', 'array');
     todoOut();
-};
 
-// function sorting(item) {
-//     var chkb = document.getElementsByClassName('chk');
-//     var todo = document.getElementsByClassName('todo__item');
-//     var chkattr = item.getAttribute('data-attr');
-//     console.log(chkattr);
-//     if (chkb[chkattr].checked) {
-//         todoArray.push(todoArray[chkattr]);
-//         todoOut();
-//     }
-// }
+}
+
 
 function delTodo(item) {
-    var todo = document.getElementsByClassName('todo__item');
     var id = item.getAttribute('data-id');
-    todoArray.splice(id, 1);
+    todoArray.splice(todoArray[id], 1);
     todoOut();
-};
+}

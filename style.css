@@ -80,6 +80,10 @@ body {
     box-shadow: -1px 0px 31px 0px rgba(0, 0, 0, 0.75);
 }
 
+.todo__btndel:active {
+    transform: translate(0, 0);
+}
+
 .todo__input {
     width: 55%;
     min-width: 250px;
@@ -188,7 +192,10 @@ body {
     visibility: hidden;
 }
 
-.chk:checked+.todo__text {
+
+/* .chk:checked+.todo__text */
+
+.active {
     text-decoration: line-through;
 }
 
